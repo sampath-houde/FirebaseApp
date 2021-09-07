@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">taskSolutionDeveloper</string>
+    <string name="signUpText">Are you new to App? <u>Sign up</u></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
