@@ -33,6 +33,11 @@
     <color name="dark_purple">#673AB7</color>
     <color name="light_purple">#AE81FF</color>
     <color name="errorRed">#FFC6C6</color>
+    <color name="colorPrimary">#D83400</color>
+    <color name="colorPrimaryVariant">#8E2200</color>
+    <color name="colorSecondary">@color/black</color>
+    <color name="colorSecondaryVariant">#676767</color>
+    <color name="colorOnSecondary">@color/black</color>
 
     <array name="colorText">
         <item>#5C00FF</item>

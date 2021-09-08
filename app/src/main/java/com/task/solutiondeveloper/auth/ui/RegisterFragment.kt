@@ -6,14 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.task.solutiondeveloper.auth.data.User
+import com.task.solutiondeveloper.auth.model.User
 import com.task.solutiondeveloper.databinding.FragmentRegisterBinding
 import com.task.solutiondeveloper.utils.CalendarBuilder
+import com.task.solutiondeveloper.utils.Constants
 import com.task.solutiondeveloper.utils.showError
 import com.task.solutiondeveloper.utils.toastShort
 
@@ -33,6 +35,9 @@ class RegisterFragment : Fragment() {
 
         auth = Firebase.auth
 
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         return binding.root
     }
@@ -86,11 +91,18 @@ class RegisterFragment : Fragment() {
     }
 
     private fun generateUser(name: String, email: String, age: String, birthday: String) {
-        val user = User(email, name, age, birthday)
+        val user = User(birthday, name, age, email)
 
-        FirebaseDatabase.getInstance().getReference("Users")
-            .child(FirebaseAuth.getInstance().currentUser?.uid!!)
+
+        FirebaseDatabase.getInstance().getReference(Constants.DATABASE_USER_REF)
+            .child(Constants.removeSpecialCharacters(email))
             .setValue(user)
+            .addOnCompleteListener {
+                findNavController().navigateUp()
+            }
+            .addOnFailureListener {
+                toastShort(requireContext(), "Error")
+            }
     }
 
     fun checkValidityOfRegisterFields(

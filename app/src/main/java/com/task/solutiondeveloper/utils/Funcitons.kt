@@ -16,3 +16,4 @@ fun Fragment.showError(editTextLayout: TextInputLayout, message: String) {
         setErrorIconDrawable(com.task.solutiondeveloper.R.drawable.ic_baseline_error_24)
     }
 }
+
