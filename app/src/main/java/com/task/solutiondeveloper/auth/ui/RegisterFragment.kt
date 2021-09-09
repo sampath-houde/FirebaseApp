@@ -14,16 +14,14 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.task.solutiondeveloper.auth.model.User
 import com.task.solutiondeveloper.databinding.FragmentRegisterBinding
-import com.task.solutiondeveloper.utils.CalendarBuilder
-import com.task.solutiondeveloper.utils.Constants
-import com.task.solutiondeveloper.utils.showError
-import com.task.solutiondeveloper.utils.toastShort
+import com.task.solutiondeveloper.utils.*
 
 class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
     private val ERROR = "This field is required."
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +30,8 @@ class RegisterFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_register, container, false)
         binding = FragmentRegisterBinding.bind(view)
+
+        loadingDialog = LoadingDialog(requireActivity())
 
         auth = Firebase.auth
 
@@ -74,8 +74,10 @@ class RegisterFragment : Fragment() {
             val bool = checkValidityOfRegisterFields(name, age, email, password, birthday)
 
             if (bool) {
+                loadingDialog.startLoading()
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
+                        loadingDialog.stopLoading()
                         if(it.isSuccessful) {
                             generateUser(name, email, age, birthday)
                             val current = auth.currentUser!!

@@ -17,34 +17,21 @@
     <color name="light_grey5">#E4E4E4</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="hightligh_color">#A5000000</color>
-    <color name="indicatorColor">#FFC822</color>
-    <color name="lightish_yellow">#FFEBB2</color>
     <color name="silver">#DADADA</color>
     <color name="green">#4CAF50</color>
     <color name="light_green">#8BC34A</color>
-    <color name="cb_errorRed">#e40000</color>
-    <color name="hollow_red_light">@android:color/holo_red_light</color>
-    <color name="app_red">#E50914</color>
-    <color name="app_dark_red">#A30909</color>
-    <color name="app_light_red">#E64B53</color>
     <color name="hollow_dark_blue">#0069BC</color>
     <color name="light_blue">#42C4FF</color>
     <color name="dark_blue">#2196F3</color>
     <color name="dark_purple">#673AB7</color>
     <color name="light_purple">#AE81FF</color>
-    <color name="errorRed">#FFC6C6</color>
     <color name="colorPrimary">#D83400</color>
     <color name="colorPrimaryVariant">#8E2200</color>
     <color name="colorSecondary">@color/black</color>
     <color name="colorSecondaryVariant">#676767</color>
     <color name="colorOnSecondary">@color/black</color>
-
-    <array name="colorText">
-        <item>#5C00FF</item>
-        <item>#FF0057</item>
-        <item>#2244FF</item>
-        <item>#FF3D00</item>
-        <item>#FFE500</item>
-        <item>#DA00FF</item>
-    </array>
+    <color name="SingleTodobackgroundIncomplete">#302F2F</color>
+    <color name="SingleTodobackgroundComplete">#292929</color>
+    <color name="titleColor">#FFFBFC</color>
+    <color name="textHintColor">#878585</color>
 </resources>

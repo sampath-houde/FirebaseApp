@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".main.ui.TaskFragment">
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_22sdp"
+        android:padding="@dimen/_6sdp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/task_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tasks"
+        android:textSize="@dimen/_24sdp"
+        android:textColor="@color/black"
+        android:layout_below="@id/back_btn"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:fontFamily="@font/poppins_semibold"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/task_text"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/single_todo_view" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            android:id="@+id/LayoutBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/todo_bottom_background"
+            android:paddingBottom="20dp">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/closeLayout"
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/todoTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                android:background="@null"
+                android:layout_below="@id/closeLayout"
+                android:hint="Create a task"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="#FFFBFC"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="18sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/doneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/todoTask"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Add"
+                android:textColor="#0A82FB"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

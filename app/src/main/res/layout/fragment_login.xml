@@ -94,7 +94,7 @@
                         app:endIconMode="password_toggle"
                         app:endIconTint="@color/black"
                         app:hintTextColor="@color/dark_grey"
-                        app:passwordToggleTint="@color/app_red">
+                        app:passwordToggleTint="@color/colorPrimary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/password_edit_text"

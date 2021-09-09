@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -22,6 +23,7 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var list: MutableList<User>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +47,11 @@ class HomeFragment : Fragment() {
 
         if(auth.currentUser != null) {
             updateUI(auth.currentUser?.email!!)
+        }
+
+        binding.addBtn.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToTaskFragment(Constants.removeSpecialCharacters(auth.currentUser?.email!!))
+            findNavController().navigate(action)
         }
 
     }
