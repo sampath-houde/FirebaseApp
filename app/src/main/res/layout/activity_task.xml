@@ -37,44 +37,43 @@
         android:layout_marginTop="@dimen/_12sdp"
         android:orientation="vertical"
         android:overScrollMode="never"
-
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/single_todo_view" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <RelativeLayout
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
             android:id="@+id/LayoutBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/todo_bottom_background"
-            android:paddingBottom="20dp">
+            android:paddingBottom="20dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/closeLayout"
                 android:layout_width="40dp"
                 android:layout_height="4dp"
-                app:cardBackgroundColor="@android:color/white"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp" />
+                android:layout_marginTop="15dp"
+                app:cardBackgroundColor="@android:color/white" />
 
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/todoTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/closeLayout"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="30dp"
                 android:background="@null"
-                android:layout_below="@id/closeLayout"
                 android:hint="Create a task"
                 android:imeOptions="actionDone"
                 android:inputType="text"
@@ -90,8 +89,8 @@
                 android:layout_below="@id/todoTask"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="35dp"
-                android:layout_marginBottom="5dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="Add"

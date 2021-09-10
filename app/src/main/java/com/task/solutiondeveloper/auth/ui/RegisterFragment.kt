@@ -89,8 +89,8 @@ class RegisterFragment : Fragment() {
                         if(it.isSuccessful) {
                             generateUser(name, email, age, birthday)
                             val current = auth.currentUser!!
-                            current.sendEmailVerification()
                             toastShort(requireContext(), "Verification email sent to $email" )
+                            current.sendEmailVerification()
                         } else {
                             toastShort(requireContext(), "Error")
                         }

@@ -38,13 +38,6 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.bind(view)
 
         auth = Firebase.auth
-
-        return binding.root
-    }
-
-    override fun onStart() {
-        super.onStart()
-
         auth.currentUser.let {
             if(it == null) showLoginScreen()
             else {
@@ -53,10 +46,18 @@ class LoginFragment : Fragment() {
                     startActivity(Intent(requireActivity(), MainActivity::class.java))
                     requireActivity().finish()
                 } else {
-                    toastShort(requireContext(), "Verify Email")
+                    showLoginScreen()
                 }
             }
         }
+
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+
 
     }
 

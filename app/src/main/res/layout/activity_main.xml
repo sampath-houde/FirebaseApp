@@ -11,26 +11,27 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_alignParentBottom="true"
         android:layout_height="@dimen/_80sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
         tools:context=".main.ui.MainActivity">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:fabCradleMargin="@dimen/_12sdp"
+            android:layout_gravity="bottom"
             app:backgroundTint="@color/dark_grey"
-            app:fabCradleVerticalOffset="@dimen/_10sdp"
+            app:fabCradleMargin="@dimen/_12sdp"
             app:fabCradleRoundedCornerRadius="@dimen/_12sdp"
-            android:layout_gravity="bottom">
+            app:fabCradleVerticalOffset="@dimen/_10sdp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
