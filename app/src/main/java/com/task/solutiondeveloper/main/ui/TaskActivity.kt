@@ -75,6 +75,10 @@ class TaskActivity : AppCompatActivity() {
 
         })
 
+        binding.backBtn.setOnClickListener {
+            onBackPressed()
+        }
+
     }
 
     private fun addTaskToDatabase(task: String) {
