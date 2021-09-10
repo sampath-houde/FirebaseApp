@@ -4,6 +4,8 @@
         <item>@font/poppins</item>
         <item>@font/poppins_medium</item>
         <item>@font/poppins_semibold</item>
+        <item>@font/raleway</item>
+        <item>@font/raleway_semibold</item>
         <item>@font/ubuntu</item>
     </array>
 </resources>

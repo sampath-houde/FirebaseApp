@@ -1,6 +1,7 @@
 
 package com.task.solutiondeveloper
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -9,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -18,12 +18,17 @@ import com.task.solutiondeveloper.main.ui.MainActivity
 import com.task.solutiondeveloper.utils.Constants
 import com.task.solutiondeveloper.utils.showError
 import com.task.solutiondeveloper.utils.toastShort
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
 
     private val ERROR = "This field is required."
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
+    private val defaultScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +45,19 @@ class LoginFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        showLoginScreen()
+        auth.currentUser.let {
+            if(it == null) showLoginScreen()
+            else {
+                if(it.isEmailVerified) {
+                    toastShort(requireContext(), "Logged In")
+                    startActivity(Intent(requireActivity(), MainActivity::class.java))
+                    requireActivity().finish()
+                } else {
+                    toastShort(requireContext(), "Verify Email")
+                }
+            }
+        }
+
     }
 
     private fun showLoginScreen() {
@@ -62,6 +79,7 @@ class LoginFragment : Fragment() {
                             if(currentUser!!.isEmailVerified) {
                                 toastShort(requireContext(), "Logged In")
                                 startActivity(Intent(requireActivity(), MainActivity::class.java))
+                                requireActivity().finish()
                             } else {
                                 toastShort(requireContext(), "Verify Email")
                             }
@@ -73,6 +91,7 @@ class LoginFragment : Fragment() {
 
         }
     }
+
 
     fun checkValidityOfLoginFields(email: String, password: String): Boolean {
         val isAllFieldsValid: Boolean

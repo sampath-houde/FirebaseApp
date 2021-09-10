@@ -15,12 +15,11 @@
     </fragment>
     <fragment
         android:id="@+id/taskFragment"
-        android:name="com.task.solutiondeveloper.main.ui.TaskFragment"
+        android:name="com.task.solutiondeveloper.main.ui.TaskActivity"
         android:label="fragment_task"
-        tools:layout="@layout/fragment_task" >
-        <argument
-            android:name="id"
-            app:argType="string"
-            android:defaultValue="null" />
-    </fragment>
+        tools:layout="@layout/activity_task" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.task.solutiondeveloper.main.ui.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

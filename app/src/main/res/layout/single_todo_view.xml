@@ -12,7 +12,7 @@
     android:layout_marginTop="@dimen/_5sdp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="@dimen/_15sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,22 +20,29 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/titleTodo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
             android:fontFamily="@font/poppins"
             android:text="Drink Water"
-            android:layout_marginStart="@dimen/_12sdp"
             android:textColor="@color/white"
-            android:textSize="@dimen/_11sdp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/deleteButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/deleteButton"
             android:layout_width="35dp"
-            app:cardCornerRadius="7dp"
-            android:layout_centerVertical="true"
+            app:cardCornerRadius="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_6sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:cardBackgroundColor="@color/dark_grey2"
             android:layout_alignParentEnd="true"
             android:layout_height="@dimen/_28sdp">
@@ -47,5 +54,5 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

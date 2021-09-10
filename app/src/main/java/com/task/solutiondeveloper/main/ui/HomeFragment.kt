@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -16,6 +17,7 @@ import com.task.solutiondeveloper.R
 import com.task.solutiondeveloper.auth.model.User
 import com.task.solutiondeveloper.databinding.FragmentHomeBinding
 import com.task.solutiondeveloper.utils.Constants
+import com.task.solutiondeveloper.utils.LoadingDialog
 
 class HomeFragment : Fragment() {
 
@@ -23,7 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var list: MutableList<User>
-
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +34,10 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         binding = FragmentHomeBinding.bind(view)
-        binding.bottomNavigationView.background = null
+
+
+        loadingDialog = LoadingDialog(requireActivity())
+        binding.mainLayout.visibility = View.GONE
 
         list = mutableListOf()
 
@@ -46,13 +51,11 @@ class HomeFragment : Fragment() {
         super.onStart()
 
         if(auth.currentUser != null) {
+            loadingDialog.startLoading()
             updateUI(auth.currentUser?.email!!)
         }
 
-        binding.addBtn.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToTaskFragment(Constants.removeSpecialCharacters(auth.currentUser?.email!!))
-            findNavController().navigate(action)
-        }
+
 
     }
 
@@ -63,10 +66,12 @@ class HomeFragment : Fragment() {
 
         database.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-
+                list.clear()
+                binding.mainLayout.visibility = View.VISIBLE
+                loadingDialog.stopLoading()
                 for(i in snapshot.children) {
 
-                    list.add(i.getValue(User::class.java)!!)
+                    if(Constants.removeSpecialCharacters(email) != i.key!!) list.add(i.getValue(User::class.java)!!)  //To not show the logged in user again in this list.
 
                     if(Constants.removeSpecialCharacters(email) == i.key!!) {
                         val user = i.getValue(User::class.java)

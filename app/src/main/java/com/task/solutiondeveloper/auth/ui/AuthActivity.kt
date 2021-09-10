@@ -3,6 +3,7 @@ package com.task.solutiondeveloper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 
@@ -14,6 +15,8 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         window?.statusBarColor = ContextCompat.getColor(applicationContext, R.color.colorPrimaryVariant)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        window?.statusBarColor = ContextCompat.getColor(applicationContext, R.color.black)
     }
 }

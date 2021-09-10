@@ -17,3 +17,6 @@ fun Fragment.showError(editTextLayout: TextInputLayout, message: String) {
     }
 }
 
+fun Activity.toastShort(context: Context, message: String) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+}

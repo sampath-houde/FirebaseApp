@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_22sdp"
             android:layout_marginTop="@dimen/_22sdp"
-            android:fontFamily="@font/ubuntu"
+            android:fontFamily="@font/raleway_semibold"
             android:text="Login"
             android:textColor="@color/black"
             android:textSize="@dimen/_22sdp" />
@@ -30,7 +30,7 @@
             android:layout_height="@dimen/_200sdp"
             android:layout_below="@id/text"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             android:src="@drawable/login_banner" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.task.solutiondeveloper.auth.model.User
 import com.task.solutiondeveloper.databinding.FragmentRegisterBinding
 import com.task.solutiondeveloper.utils.*
+import java.util.*
 
 class RegisterFragment : Fragment() {
 
@@ -45,6 +46,25 @@ class RegisterFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         showUI()
+
+        binding.backBtn.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.birthdayEditText.setOnClickListener {
+
+            val builder = CalendarBuilder.getMaterialDateBuilder()
+            val materialDatePicker = builder.build()
+
+            materialDatePicker.addOnPositiveButtonClickListener {
+
+                binding.birthdayEditText.setText(materialDatePicker.headerText)
+                binding.birthdayInputLayout.error = null
+            }
+
+
+            materialDatePicker.show(requireFragmentManager(), "tag")
+        }
     }
 
     private fun showUI() {
@@ -57,19 +77,7 @@ class RegisterFragment : Fragment() {
             val password = binding.passwordEditText2.text.toString().trim()
             val birthday = binding.birthdayEditText.text.toString()
 
-            binding.birthdayEditText.setOnClickListener {
 
-                val builder = CalendarBuilder.getMaterialDateBuilder()
-                val materialDatePicker = builder.build()
-
-                materialDatePicker.addOnPositiveButtonClickListener {
-                    binding.birthdayEditText.setText(materialDatePicker.headerText)
-                    binding.birthdayInputLayout.error = null
-                }
-
-
-                materialDatePicker.show(requireFragmentManager(), "tag")
-            }
 
             val bool = checkValidityOfRegisterFields(name, age, email, password, birthday)
 
@@ -138,8 +146,10 @@ class RegisterFragment : Fragment() {
         } else if (birthday.isEmpty()) {
             showError(binding.birthdayInputLayout, ERROR)
             isAllFieldsValid = false
-        }
-        else isAllFieldsValid = true
+        } else if( (Calendar.getInstance().get(Calendar.YEAR) - Constants.getYear(birthday) ) != age.toInt() ) {
+            showError(binding.birthdayInputLayout, "Birth year is wrong")
+            isAllFieldsValid = false
+        } else isAllFieldsValid = true
 
         return isAllFieldsValid
     }

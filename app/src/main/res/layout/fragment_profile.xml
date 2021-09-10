@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:overScrollMode="never"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/parent_layout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/mainLayout"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".main_section.fragments.EditProfileFragment">
+
+            <ImageView
+                android:id="@+id/logout"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_baseline_logout_24"
+                app:tint="@color/dark_grey2" />
+
+            <TextView
+                android:id="@+id/account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logout"
+                android:layout_marginStart="@dimen/_28sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="Account"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_22sdp" />
+
+            <ImageView
+                android:id="@+id/profie_photo"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_below="@id/account"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_28sdp"
+                android:src="@drawable/dummy_man"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profie_photo"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:layout_marginEnd="12dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name_editext_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintTextColor="@color/dark_grey2"
+                    app:boxStrokeColor="@color/light_grey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ubuntu"
+                        android:inputType="text"
+                        android:hint="Name"
+                        android:singleLine="true"
+                        android:text="Sampath Houde"
+                        android:textColor="@color/dark_grey"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_11sdp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/birthday_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_layout"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="12dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/birthday_input_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/light_grey"
+                    app:hintTextColor="@color/dark_grey2"
+                    app:boxStrokeColor="@color/light_grey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/birthday_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_44sdp"
+                        android:focusable="false"
+                        android:fontFamily="@font/ubuntu"
+                        android:lines="1"
+                        android:hint="Birthday"
+                        android:singleLine="true"
+                        android:textColor="@color/dark_grey"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_11sdp" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/age_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/birthday_layout"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="12dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/age_input_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/light_grey"
+                    app:boxStrokeColor="@color/light_grey"
+                    app:hintTextColor="@color/dark_grey2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/age_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_44sdp"
+                        android:fontFamily="@font/ubuntu"
+                        android:lines="1"
+                        android:hint="Age"
+                        android:singleLine="true"
+                        android:textColor="@color/dark_grey"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_11sdp" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/update_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@id/age_layout"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="18dp"
+                android:fontFamily="@font/ubuntu"
+                android:text="Update"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp"
+                app:backgroundTint="@color/colorPrimary"
+                app:cornerRadius="@dimen/_4sdp"
+                app:rippleColor="@color/light_grey5" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>

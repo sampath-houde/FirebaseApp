@@ -13,6 +13,7 @@ object CalendarBuilder {
         //Makes only dates from today backward selectable.
         val constraintsBuilder = CalendarConstraints.Builder().setValidator(
             DateValidatorPointBackward.now())
+
         materialDateBuilder.setCalendarConstraints(constraintsBuilder.build())
 
         return materialDateBuilder
